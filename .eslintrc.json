@@ -1,0 +1,93 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "root": true,
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "jsxSingleQuote": false,
+        "printWidth": 100,
+        "quoteProps": "as-needed",
+        "semi": false,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "none",
+        "useTabs": false,
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["./client/**/*.ts", "./client/**/*.tsx"],
+      "parserOptions": {
+        "project": "./client/tsconfig.json"
+      },
+      "env": { "browser": true, "es2020": true },
+      "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:prettier/recommended"
+      ],
+      "plugins": ["@typescript-eslint", "prettier", "react", "react-refresh"],
+      "rules": {
+        "semi": [2, "never"],
+        "@typescript-eslint/class-name-casing": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-restricted-syntax": "off",
+        "no-use-before-define": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "no-param-reassign": "off",
+        "no-underscore-dangle": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "import/no-unresolved": "off",
+        "consistent-return": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "sx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "no-prototype-builtins": "off",
+        "no-nested-ternary": "off"
+      }
+    },
+    {
+      "files": ["./server/**/*.ts"],
+      "parserOptions": {
+        "project": "./server/tsconfig.json",
+        "sourceType": "module"
+      },
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+      "env": {
+        "node": true,
+        "jest": true
+      },
+      "rules": {
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
+}

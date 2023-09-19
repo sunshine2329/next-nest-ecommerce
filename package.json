@@ -6,8 +6,12 @@
     "start:server": "npm run start:dev --prefix server",
     "start:client": "npm run dev --prefix client",
     "start": "concurrently npm:start:*",
-    "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "check-types": "tsc --noEmit --pretty",
+    "format:server": "npm run format --prefix server",
+    "format:client": "npm run format --prefix client",
+    "format": "concurrently npm:format:*",
+    "check-types:server": "npm run check-types --prefix server",
+    "check-types:client": "npm run check-types --prefix client",
+    "check-types": "concurrently npm:check-types:*",
     "commit": "cz",
     "prepare": "husky install"
   },
@@ -17,7 +21,18 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/cz-commitlint": "^17.7.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
     "concurrently": "^8.2.1",
+    "eslint": "^8.49.0",
+    "eslint-config-next": "^13.4.19",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "typescript": "^5.2.2"
@@ -26,5 +41,8 @@
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
     }
+  },
+  "dependencies": {
+    "prettier": "^3.0.3"
   }
 }
