@@ -1,0 +1,80 @@
+import { ActionTypes } from './cart.action-types'
+import { AddCartItemSuccess, CartAction } from './cart.actions'
+import { cartInitialState } from './cart.initial-state'
+import { CartState } from './cart.state'
+
+const success = (state: CartState = cartInitialState, action: AddCartItemSuccess): CartState => {
+  const item = action.payload
+  const itemExists = state.data.cartItems.find(x => x.productId === item.productId)
+
+  if (itemExists) {
+    return {
+      ...state,
+      loading: false,
+      data: {
+        ...state.data,
+        cartItems: state.data.cartItems.map(x => (x.productId === itemExists.productId ? item : x))
+      }
+    }
+  }
+
+  return {
+    loading: false,
+    data: { ...state.data, cartItems: [...state.data.cartItems, item] },
+    error: null
+  }
+}
+export const cartReducer = (state: CartState = cartInitialState, action: CartAction): CartState => {
+  switch (action.type) {
+    case ActionTypes.ADD_CART_ITEM_START:
+      return { ...state, loading: true, error: null }
+    case ActionTypes.ADD_CART_ITEM_SUCCESS:
+      return success(state, action)
+    case ActionTypes.ADD_CART_ITEM_ERROR:
+      return { ...state, loading: false, error: action.payload }
+
+    case ActionTypes.REMOVE_CART_ITEM:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          cartItems: state.data.cartItems.filter(x => x.productId !== action.payload)
+        }
+      }
+
+    case ActionTypes.SAVE_CART_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          shippingDetails: action.payload
+        }
+      }
+
+    case ActionTypes.SAVE_CART_PAYMENT_METHOD:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          paymentMethod: action.payload
+        }
+      }
+
+    case ActionTypes.GET_CART_START:
+      return { ...state, loading: true }
+    case ActionTypes.GET_CART_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+        error: null
+      }
+    case ActionTypes.GET_CART_ERROR:
+      return { ...state, loading: false, error: action.payload }
+
+    case ActionTypes.CALCULATE_PRICES:
+      return { ...state, data: action.payload }
+
+    default:
+      return state
+  }
+}

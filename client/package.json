@@ -11,9 +11,16 @@
     "check-types": "tsc --noEmit --pretty"
   },
   "dependencies": {
+    "axios": "^1.5.0",
+    "bootstrap": "^5.3.2",
     "next": "13.4.19",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.4.19",
@@ -22,6 +29,11 @@
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
+    "@types/react-redux": "^7.1.26",
+    "@types/redux": "^3.6.0",
+    "@types/redux-devtools-extension": "^2.13.2",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/uuid": "^9.0.4",
     "autoprefixer": "10.4.15",
     "postcss": "8.4.30",
     "tailwindcss": "3.3.3",
