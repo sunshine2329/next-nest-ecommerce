@@ -1,0 +1,30 @@
+{
+  "name": "next-nest-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start:server": "npm run start:dev --prefix server",
+    "start:client": "npm run dev --prefix client",
+    "start": "concurrently npm:start:*",
+    "format": "prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
+    "check-types": "tsc --noEmit --pretty",
+    "commit": "cz",
+    "prepare": "husky install"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/cz-commitlint": "^17.7.1",
+    "concurrently": "^8.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "typescript": "^5.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
+}
